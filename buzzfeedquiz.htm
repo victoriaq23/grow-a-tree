@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>How sustainable are you?</title>
+</head>
+<title>GROW A TREE</title>
+<style>
+
+body {
+background-color: rgb(10, 10, 141);
+font-family: Times New Roman;
+}
+
+#main {
+width: 90%;
+border: 1px gray solid;
+margin: auto;
+padding: 10px;
+background-color: white;
+border-radius: 10px;
+}
+
+#header {
+margin-top: 0;
+border: 4px solid black;
+padding: 5px;
+height: 250px;
+}
+
+label {
+width: 150px;
+display: inline-block;
+}
+
+button {
+display: block;
+margin-top: 20px;
+}
+
+
+</style>
+</head>
+<body>
+<div id="main">
+<div id="header"><h1>Hackathon Trees Quiz</h1></div>
+
+<form  id="form1">
+<p><h3>You wake up in the morning and head out. How do you reach your destination?</h3></p>
+<label><input type="radio" name="transportation" id="walk" value="best" />Walk or bike to the store</label>
+<label><input type="radio" name="transportation" id="publicT" value="ok" />Take public transportation</label>
+<label><input type="radio" name="transportation" id="drive" value="worst" />Drive</label>
+
+<p><h3>You go to the grocery store to grab a snack. What snack do you choose?</h3></p>
+<label><input type="radio" name="snack" id="fruit" value="best" />Locally grown fruit</label>
+<label><input type="radio" name="snack" id="yogurt" value="ok" />Yogurt</label>
+<label><input type="radio"  name="snack" id="processed" value="worst" />A processed snack made with palm oil</label>
+
+<p><h3>Now you're checking out at the grocery store. How do you carry your groceries out?</h3></p>
+<label><input type="radio" name="grocery" id="reusable" value="best" />Bring a reusable bag and containers</label>
+<label><input type="radio" name="grocery" id="carry" value="ok" />Carry everything out by hand because you don't want to spend 5 cents on a bag</label>
+<label><input type="radio" name="grocery" id="purchase" value="worst" />Purchase a bag to carry home</label>
+
+<p><h3>It's lunch time and you're getting ready to eat. How did you pack your lunch?</h3></p>
+<label><input type="radio" name="lunch" id="tupperware" value="best" />You use a tupperware and reusable utensils</label>
+<label><input type="radio" name="lunch" id="plastic" value="ok" />You use a plastic to-go container and compostable plastic cutlery</label>
+<label><input type="radio" name="lunch" id="styrofoam" value="worst" />You use styrofoam containers and plastic utensils that you throw away after lunch</label>
+
+<p><h3>You just finished drinking a bottle of water. What now?</h3></p>
+<label><input type="radio" name="water" id="refill" value="best" />I use a reusable water bottle so I will continue to refill and use it</label>
+<label><input type="radio" name="water" id="recycle" value="ok" />I recycle my plastic water bottle</label>
+<label><input type="radio"  name="water" id="toss" value="worst" />I toss my plastic water bottle in the garbage bin</label>
+
+<p><h3>Your friend is crying over a PSET. What do you do?</h3></p>
+<label><input type="radio" name="PSET" id="sweater" value="best" />Hug them and let their tears soak into your sweater</label>
+<label><input type="radio" name="PSET" id="kleenex" value="ok" />Give them an entire box of Kleenex</label>
+<label><input type="radio" name="PSET" id="fire" value="worst" />Cut down a forest and burn a copy of The Lorax on DVD</label>
+
+<p><h3>It's the weekend! What are you going to do?</h3></p>
+<label><input type="radio" name="weekend" id="cleanup" value="best" />Clean up a beach and plant a tree</label>
+<label><input type="radio" name="weekend" id="sit" value="ok" />Sitting and turning oxygen into carbon dioxide</label>
+<label><input type="radio" name="weekend" id="roadTrip" value="worst" />Taking a spontaneous road trip halfway across the country and producing tons of carbon emissions in the process</label>
+
+
+<button type="submit" value="Submit">Submit</button>
+</form>
+
+<p id="answer"></p>
+<p id="answer2"></p>
+<p id="answer3"></p>
+<p id="answer4"></p>
+<p id="answer5"></p>
+<p id="answer6"></p>
+<p id="answer7"></p>
+<p id="answer8"></p>
+
+
+</div>
+<script>
+
+
+	document.getElementById("form1").onsubmit=function() {
+
+	  transportation = document.querySelector('input[name = "transportation"]:checked').value;
+
+	  snack = document.querySelector('input[name = "snack"]:checked').value;
+
+	  grocery = document.querySelector('input[name = "grocery"]:checked').value;
+
+	  lunch = document.querySelector('input[name = "lunch"]:checked').value;
+
+	  water = document.querySelector('input[name = "water"]:checked').value;
+
+	  PSET = document.querySelector('input[name = "PSET"]:checked').value;
+
+	  weekend = document.querySelector('input[name = "weekend"]:checked').value;
+
+	  // initialize score variable
+	  score = 0;
+
+	  //function to increment score
+	  function eachscore(x){
+	  if(x == "best") { score = score + 1 }
+	  if(x == "worst") { score = score - 1 }
+	  }
+
+
+	  //call function for each question
+	  eachscore(eval("transportation"));
+	  eachscore(eval("snack"));
+	  eachscore(eval("grocery"));
+	  eachscore(eval("lunch"));
+	  eachscore(eval("water"));
+	  eachscore(eval("PSET"));
+	  eachscore(eval("weekend"));
+
+
+
+//loop returning scores and feedback
+
+if(score == 0){
+	document.getElementById("answer4").innerHTML = "Your sustainability tree is dead :( You are not making environmentally friendly choices right now but that can always change!"
+}
+if(score == 1 || score == 2){
+	document.getElementById("answer4").innerHTML = "Your sustainability tree is a wee little sprout. You make some environmentally conscious decisions, but not enough."
+}
+if(score == 3 || score == 4){
+	document.getElementById("answer4").innerHTML = "Your sustainability tree is a small sapling. You are doing your bit for the environment, but there's still plenty of room for growth."
+}
+if(score == 5 || score == 6){
+	document.getElementById("answer4").innerHTML = "Your sustainability tree is decently sized! You are definitely environmentally conscious, at least for the most part."
+}
+if(score == 7){
+	document.getElementById("answer4").innerHTML = "Wow! Your sustainability tree is a big happy lad. You live a very environmentally friendly lifestyle."
+}
+
+
+
+
+	   return false; // required to not refresh the page; just leave this here
+	   }// end the submit function
+
+
+</script>
+
+
+
+</body>
+</html>
